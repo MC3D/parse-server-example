@@ -46,12 +46,16 @@ app.get('/test', function(req, res) {
   res.sendFile(path.join(__dirname, '/public/test.html'));
 });
 
-const BASE_URL = 'https://api.nasa.gov/mars-photos/api/v1/rovers/'
-const API_KEY = 'XiPVohbJ1czo1N4Czgvs87NBaWCJMwr4V6P7Q8M4';
-let imageUrl = `${BASE_URL}Opportunity/photos?sol=2000&camera=RHAZ (Rear Hazard)&api_key=${API_KEY}`;
+
 
 app.get('/mars', function(req, res) {
-  console.log('attempting to get mars data');
+  const BASE_URL = 'https://api.nasa.gov/mars-photos/api/v1/rovers/'
+  const API_KEY = 'XiPVohbJ1czo1N4Czgvs87NBaWCJMwr4V6P7Q8M4';
+  let imageUrl = `${BASE_URL}Opportunity/photos?sol=2000&camera=RHAZ (Rear Hazard)&api_key=${API_KEY}`;
+  res.send('here i am');
+
+
+  // console.log('attempting to get mars data');
   // res.sendFile(path.join(__dirname, '/public/test.html'));
 
 });
