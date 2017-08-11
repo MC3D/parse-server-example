@@ -5,6 +5,8 @@ var express = require('express');
 var ParseServer = require('parse-server').ParseServer;
 var path = require('path');
 var cors = require('cors');
+var request = require('request');
+var $ = require('jquery');
 
 var databaseUri = process.env.DATABASE_URI || process.env.MONGODB_URI;
 
@@ -55,14 +57,27 @@ app.get('/proxy', function(req, res) {
   // res.send(req.query.camera);
 
   // do a request inside the get and return the results to your FEE project
-  const BASE_URL = 'https://api.nasa.gov/mars-photos/api/v1/rovers/'
-  const API_KEY = 'XiPVohbJ1czo1N4Czgvs87NBaWCJMwr4V6P7Q8M4';
-  let imageUrl = `${BASE_URL}${req.query.rover}/photos?sol=${req.query.sol}&camera=${req.query.camera}&api_key=${API_KEY}`;
 
-  fetch(imageUrl)
-  .then(response => response.json())
-  .then((json) => {
-    res.send(json.photos)
+  var params = {
+    api_key: 'XiPVohbJ1czo1N4Czgvs87NBaWCJMwr4V6P7Q8M4',
+    rover: req.query.rover,
+    camera: req.query.camera,
+    sol: req.query.sol
+  }
+
+  var options = {
+    url: 'https://api.nasa.gov/mars-photos/api/v1/rovers/',
+    body: $.param(params)
+  }
+  // var base_url = 'https://api.nasa.gov/mars-photos/api/v1/rovers/'
+  // var api_key = 'XiPVohbJ1czo1N4Czgvs87NBaWCJMwr4V6P7Q8M4';
+  // var imageUrl = `${base_url}${req.query.rover}/photos?sol=${req.query.sol}&camera=${req.query.camera}&api_key=${api_key}`;
+
+  request(options, function (error, response, body) {
+    res.send(body);
+    // console.log('error:', error); // Print the error if one occurred
+    // console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
+    // console.log('body:', body); // Print the HTML for the Google homepage.
   });
 });
 
