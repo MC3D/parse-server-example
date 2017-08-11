@@ -52,8 +52,7 @@ app.get('/test', function(req, res) {
 
 // new endpoint example for student projects
 app.get('/mars', function(req, res) {
-  console.log('req', req);
-  res.send('here i am');
+  res.send(req);
 });
 
 var port = process.env.PORT || 1337;
