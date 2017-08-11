@@ -52,7 +52,8 @@ app.get('/test', function(req, res) {
 
 // new endpoint example for student projects
 app.post('/proxy', function(req, res) {
-  res.send(req.body);
+  let response = req.body
+  res.send(response);
 });
 
 var port = process.env.PORT || 1337;
