@@ -8,8 +8,6 @@ var cors =require('cors');
 
 var databaseUri = process.env.DATABASE_URI || process.env.MONGODB_URI;
 
-app.use(cors());
-
 if (!databaseUri) {
   console.log('DATABASE_URI not specified, falling back to localhost.');
 }
@@ -30,6 +28,9 @@ var api = new ParseServer({
 // javascriptKey, restAPIKey, dotNetKey, clientKey
 
 var app = express();
+
+// middleware
+app.use(cors());
 
 // Serve static assets from the /public folder
 app.use('/public', express.static(path.join(__dirname, '/public')));
