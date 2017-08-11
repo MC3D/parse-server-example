@@ -51,8 +51,10 @@ app.get('/test', function(req, res) {
 });
 
 // new endpoint example for student projects
-app.post('/proxy', function(error, response, body) {
-  res.send(body);
+app.get('/proxy', function(req, res) {
+  res.send(req.query.camera);
+
+  // do a request inside the get and return the results to your FEE project
 });
 
 var port = process.env.PORT || 1337;
