@@ -54,6 +54,7 @@ app.get('/test', function(req, res) {
 
 // new endpoint example for student projects
 app.get('/proxy', function(req, res) {
+  console.log(req.params);
   request(`https://api.nasa.gov/mars-photos/api/v1/rovers?api_key=XiPVohbJ1czo1N4Czgvs87NBaWCJMwr4V6P7Q8M4&rover=${req.params.rover}&sol=${req.params.sol}&camera=${req.params.camera}`, function (error, response, body) {
     res.send(response);
   });
