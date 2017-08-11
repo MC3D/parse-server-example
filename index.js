@@ -4,7 +4,7 @@
 var express = require('express');
 var ParseServer = require('parse-server').ParseServer;
 var path = require('path');
-var cors =require('cors');
+var cors = require('cors');
 
 var databaseUri = process.env.DATABASE_URI || process.env.MONGODB_URI;
 
@@ -50,18 +50,10 @@ app.get('/test', function(req, res) {
   res.sendFile(path.join(__dirname, '/public/test.html'));
 });
 
-
-
+// new endpoint example for student projects
 app.get('/mars', function(req, res) {
-  const BASE_URL = 'https://api.nasa.gov/mars-photos/api/v1/rovers/'
-  const API_KEY = 'XiPVohbJ1czo1N4Czgvs87NBaWCJMwr4V6P7Q8M4';
-  let imageUrl = `${BASE_URL}Opportunity/photos?sol=2000&camera=RHAZ (Rear Hazard)&api_key=${API_KEY}`;
+  console.log('req', req);
   res.send('here i am');
-
-
-  // console.log('attempting to get mars data');
-  // res.sendFile(path.join(__dirname, '/public/test.html'));
-
 });
 
 var port = process.env.PORT || 1337;
