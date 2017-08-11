@@ -51,7 +51,7 @@ const API_KEY = 'XiPVohbJ1czo1N4Czgvs87NBaWCJMwr4V6P7Q8M4';
 let imageUrl = `${BASE_URL}Opportunity/photos?sol=2000&camera=RHAZ (Rear Hazard)&api_key=${API_KEY}`;
 
 app.get('/mars', function(req, res) {
-  console.log('mars request', req);
+  res.status();
   // request(imageUrl, function(error, response, body) {
   //   if(!error && reponse.statusCode === 200) {
   //     res.send(body);
