@@ -62,7 +62,7 @@ app.get('/proxy', function(req, res) {
   fetch(imageUrl)
   .then(response => response.json())
   .then((json) => {
-    return json.photos
+    res.send(json.photos)
   });
 });
 
