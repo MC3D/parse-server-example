@@ -74,6 +74,7 @@ app.get('/proxy', function(req, res) {
   // var imageUrl = `${base_url}${req.query.rover}/photos?sol=${req.query.sol}&camera=${req.query.camera}&api_key=${api_key}`;
 
   request(options, function (error, response, body) {
+    console.log('here i am');
     res.send(body);
     // console.log('error:', error); // Print the error if one occurred
     // console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
