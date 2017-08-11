@@ -57,7 +57,6 @@ app.get('/proxy', function(req, res) {
   // res.send(req.query.camera);
 
   // do a request inside the get and return the results to your FEE project
-
   var params = {
     api_key: 'XiPVohbJ1czo1N4Czgvs87NBaWCJMwr4V6P7Q8M4',
     rover: req.query.rover,
@@ -65,13 +64,11 @@ app.get('/proxy', function(req, res) {
     sol: req.query.sol
   }
 
+  // set options for request
   var options = {
-    url: 'https://api.nasa.gov/mars-photos/api/v1/rovers',
+    url: 'https://api.nasa.gov/mars-photos/api/v1/rovers?',
     body: $.param(params)
   }
-  // var base_url = 'https://api.nasa.gov/mars-photos/api/v1/rovers/'
-  // var api_key = 'XiPVohbJ1czo1N4Czgvs87NBaWCJMwr4V6P7Q8M4';
-  // var imageUrl = `${base_url}${req.query.rover}/photos?sol=${req.query.sol}&camera=${req.query.camera}&api_key=${api_key}`;
 
   request(options, function (error, response, body) {
     console.log('here i am');
