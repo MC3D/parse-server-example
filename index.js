@@ -54,27 +54,9 @@ app.get('/test', function(req, res) {
 
 // new endpoint example for student projects
 app.get('/proxy', function(req, res) {
-  // res.send(req.query.camera);
-
-  // do a request inside the get and return the results to your FEE project
-  // var params = {
-  //   api_key: 'XiPVohbJ1czo1N4Czgvs87NBaWCJMwr4V6P7Q8M4',
-  //   rover: req.query.rover,
-  //   camera: req.query.camera,
-  //   sol: req.query.sol
-  // }
-
-  // set options for request
-  // var options = {
-  //   url: 'https://api.nasa.gov/mars-photos/api/v1/rovers?',
-  //   body: $.param(params)
-  // }
-
   request('https://api.nasa.gov/mars-photos/api/v1/rovers?api_key=XiPVohbJ1czo1N4Czgvs87NBaWCJMwr4V6P7Q8M4&rover=Opportunity&sol=2000&camera=RHAZ+(Rear+Hazard)', function (error, response, body) {
-    res.send('here i am');
+    res.send(response);
   });
-
-
 });
 
 var port = process.env.PORT || 1337;
