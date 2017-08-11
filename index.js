@@ -54,8 +54,8 @@ app.get('/test', function(req, res) {
 
 // new endpoint example for student projects
 app.get('/proxy', function(req, res) {
-  request(`https://api.nasa.gov/mars-photos/api/v1/rovers?api_key=XiPVohbJ1czo1N4Czgvs87NBaWCJMwr4V6P7Q8M4&rover=${req.params.rover}&sol=${req.params.sol}&camera=${req.params.camera}`, function (error, response, body) {
-    res.send(body);
+  request('https://api.nasa.gov/mars-photos/api/v1/rovers?api_key=XiPVohbJ1czo1N4Czgvs87NBaWCJMwr4V6P7Q8M4&rover=Opportunity&sol=2000&camera=RHAZ+(Rear+Hazard)', function (error, response, body) {
+    res.send(response, body);
   });
 });
 
