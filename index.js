@@ -66,7 +66,7 @@ app.get('/proxy', function(req, res) {
   }
 
   var options = {
-    url: 'https://api.nasa.gov/mars-photos/api/v1/rovers/',
+    url: 'https://api.nasa.gov/mars-photos/api/v1/rovers',
     body: $.param(params)
   }
   // var base_url = 'https://api.nasa.gov/mars-photos/api/v1/rovers/'
@@ -75,7 +75,11 @@ app.get('/proxy', function(req, res) {
 
   request(options, function (error, response, body) {
     console.log('here i am');
-    res.send(body);
+    res.send(
+      {
+      body: body
+      }
+    );
     // console.log('error:', error); // Print the error if one occurred
     // console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
     // console.log('body:', body); // Print the HTML for the Google homepage.
