@@ -52,9 +52,18 @@ app.get('/test', function(req, res) {
 
 // new endpoint example for student projects
 app.get('/proxy', function(req, res) {
-  res.send(req.query.camera);
+  // res.send(req.query.camera);
 
   // do a request inside the get and return the results to your FEE project
+  const BASE_URL = 'https://api.nasa.gov/mars-photos/api/v1/rovers/'
+  const API_KEY = 'XiPVohbJ1czo1N4Czgvs87NBaWCJMwr4V6P7Q8M4';
+  let imageUrl = `${BASE_URL}${req.query.rover}/photos?sol=${req.query.sol}&camera=${req.query.camera}&api_key=${API_KEY}`;
+
+  fetch(imageUrl)
+  .then(response => response.json())
+  .then((json) => {
+    return json.photos
+  });
 });
 
 var port = process.env.PORT || 1337;
