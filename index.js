@@ -71,7 +71,7 @@ app.get('/proxy', function(req, res) {
   // }
 
   request('https://api.nasa.gov/mars-photos/api/v1/rovers?api_key=XiPVohbJ1czo1N4Czgvs87NBaWCJMwr4V6P7Q8M4&rover=Opportunity&sol=2000&camera=RHAZ+(Rear+Hazard)', function (error, response, body) {
-    res.send('here i am');
+    response.send('here i am');
   });
 });
 
