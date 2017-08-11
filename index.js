@@ -52,11 +52,11 @@ let imageUrl = `${BASE_URL}Opportunity/photos?sol=2000&camera=RHAZ (Rear Hazard)
 
 app.get('/mars', function(req, res) {
   console.log('mars request', req);
-  request(imageUrl, function(error, response, body) {
-    if(!error && reponse.statusCode === 200) {
-      res.send(body);
-    }
-  })
+  // request(imageUrl, function(error, response, body) {
+  //   if(!error && reponse.statusCode === 200) {
+  //     res.send(body);
+  //   }
+  // })
 });
 
 var port = process.env.PORT || 1337;
